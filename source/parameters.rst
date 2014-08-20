@@ -1,0 +1,25 @@
+Parameters
+**********
+
+.. include subs.rst
+
+arni_processing
+===============
+
+Rating Specifications
+---------------------
+The processing node rates the incoming statistics based on given specifications.
+They are read from the namespace ``/arni/specifications``. There you might give your desired specifications for a given |seuid|_ according to this format::
+
+    n!example_node: # a seuid
+        measurement1: [minvalue, maxvalue]
+        # or
+        measurement2: [value, deviation, "relative"]
+
+Note that the measurement fields can be every field in the respective |messagetypes|.
+
+Data Storage
+------------
+The storage cleans itself and removes data older than ``/arni/storage/timeout`` which is set to 5 minutes (``300000ms``) by default. It expects an integer representing milliseconds.
+This feature can be disabled via the boolean parameter ``/arni/storage/auto_cleanup`` which is set to ``True`` by default.
+The cleanup interval can be set via the float parameter ``/arni/storage/cleanup_timer`` which expects seconds and is set to 30 by default.

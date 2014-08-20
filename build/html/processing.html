@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Processing statistics &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Countermeasures" href="countermeasure.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="countermeasure.html" title="Countermeasures"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="processing-statistics">
+<h1>Processing statistics<a class="headerlink" href="#processing-statistics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="startnode">
+<h2>StartNode<a class="headerlink" href="#startnode" title="Permalink to this headline">¶</a></h2>
+<p>The file start_node.py is the executable script to start the MonitoringNode, which then invokes all necessary
+means to rate and provide statistics from nodes, hosts and connections.</p>
+</div>
+<div class="section" id="module-arni_processing.monitoring_node">
+<span id="monitoringnode"></span><h2>MonitoringNode<a class="headerlink" href="#module-arni_processing.monitoring_node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.monitoring_node.MonitoringNode">
+<em class="property">class </em><tt class="descclassname">arni_processing.monitoring_node.</tt><tt class="descname">MonitoringNode</tt><a class="headerlink" href="#arni_processing.monitoring_node.MonitoringNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes and rates incoming topicstatistics,
+stores them for some time and publishes comparison results.</p>
+<dl class="method">
+<dt id="arni_processing.monitoring_node.MonitoringNode.receive_data">
+<tt class="descname">receive_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#arni_processing.monitoring_node.MonitoringNode.receive_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topic callback method.
+Receives data from the topic, sends them to the storage,
+lets them process and finally publishes the comparison result.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; The data received from the topic.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.monitoring_node.MonitoringNode.storage_server">
+<tt class="descname">storage_server</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#arni_processing.monitoring_node.MonitoringNode.storage_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns StorageContainer objects on request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>MetadataStorageRequest.</em>) &#8211; The request containing a timestamp and an identifier.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">MetadataStorageResponse</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.rated_statistics">
+<span id="ratedstatisticscontainer"></span><h2>RatedStatisticsContainer<a class="headerlink" href="#module-arni_processing.rated_statistics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.rated_statistics.RatedStatisticsContainer">
+<em class="property">class </em><tt class="descclassname">arni_processing.rated_statistics.</tt><tt class="descname">RatedStatisticsContainer</tt><big>(</big><em>seuid</em><big>)</big><a class="headerlink" href="#arni_processing.rated_statistics.RatedStatisticsContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the result of the comparison between the actual metadata and the specification.</p>
+<dl class="method">
+<dt id="arni_processing.rated_statistics.RatedStatisticsContainer.add_value">
+<tt class="descname">add_value</tt><big>(</big><em>metatype</em>, <em>actual</em>, <em>expected</em>, <em>state</em><big>)</big><a class="headerlink" href="#arni_processing.rated_statistics.RatedStatisticsContainer.add_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a group of values for a metatype.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>metatype</strong> (<em>str.</em>) &#8211; The measured field.</li>
+<li><strong>actual</strong> &#8211; The actual value.</li>
+<li><strong>expected</strong> &#8211; The expected value.</li>
+<li><strong>state</strong> &#8211; An error state based on the difference between actual and expected.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.rated_statistics.RatedStatisticsContainer.get_value">
+<tt class="descname">get_value</tt><big>(</big><em>metatype</em><big>)</big><a class="headerlink" href="#arni_processing.rated_statistics.RatedStatisticsContainer.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns values of the given metatype.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metatype</strong> (<em>str.</em>) &#8211; The metatype to return the values for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary with the keys <em>metatype</em>, <em>actual</em>, <em>expected</em> and <em>state</em>, each field containing it&#8217;s respective values.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.rated_statistics.RatedStatisticsContainer.to_msg_type">
+<tt class="descname">to_msg_type</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_processing.rated_statistics.RatedStatisticsContainer.to_msg_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a RatedStatisticsContainer messagetype based on the current data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A RatedStatisticsContainer object from the current data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.specification_handler">
+<span id="specificationhandler"></span><h2>SpecificationHandler<a class="headerlink" href="#module-arni_processing.specification_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.specification_handler.SpecificationHandler">
+<em class="property">class </em><tt class="descclassname">arni_processing.specification_handler.</tt><tt class="descname">SpecificationHandler</tt><a class="headerlink" href="#arni_processing.specification_handler.SpecificationHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the specifications from the parameter server, stores and compares them to the actual metadata.</p>
+<dl class="method">
+<dt id="arni_processing.specification_handler.SpecificationHandler.compare">
+<tt class="descname">compare</tt><big>(</big><em>data</em>, <em>identifier</em>, <em>specification=None</em><big>)</big><a class="headerlink" href="#arni_processing.specification_handler.SpecificationHandler.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares a Metadata object with a Specification object regarding all available matching fields.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>object.</em>) &#8211; The Metadata</li>
+<li><strong>identifier</strong> (<em>str</em>) &#8211; The identifier of the metadata package.</li>
+<li><strong>specification</strong> (<em>Specification or str.</em>) &#8211; The Specification object, alternatively a string identifying it.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A RatedStatisticsContainer object representing the result.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification_handler.SpecificationHandler.get">
+<tt class="descname">get</tt><big>(</big><em>identifier</em><big>)</big><a class="headerlink" href="#arni_processing.specification_handler.SpecificationHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Specification object from the internal storage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identifier</strong> (<em>str</em>) &#8211; The seuid describing the desired Specification object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Specification object with the given identifier, None if it was not found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification_handler.SpecificationHandler.loaded_specifications">
+<tt class="descname">loaded_specifications</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_processing.specification_handler.SpecificationHandler.loaded_specifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list containing all seuids of loaded specifications.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of strings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification_handler.SpecificationHandler.reload_specifications">
+<tt class="descname">reload_specifications</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_processing.specification_handler.SpecificationHandler.reload_specifications" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reloads all specifications loaded into the namespace /arni/specifications</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.specification">
+<span id="specification"></span><h2>Specification<a class="headerlink" href="#module-arni_processing.specification" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.specification.Specification">
+<em class="property">class </em><tt class="descclassname">arni_processing.specification.</tt><tt class="descname">Specification</tt><big>(</big><em>tuples={}</em><big>)</big><a class="headerlink" href="#arni_processing.specification.Specification" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object loaded from the specification configurations
+and basis for comparison of Metadata
+with desired values.</p>
+<dl class="method">
+<dt id="arni_processing.specification.Specification.add_tuple">
+<tt class="descname">add_tuple</tt><big>(</big><em>t</em><big>)</big><a class="headerlink" href="#arni_processing.specification.Specification.add_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a MetadataTuple to the bundle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>t</strong> (<em>MetadataTuple</em>) &#8211; The Tuple to be added.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification.Specification.get">
+<tt class="descname">get</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#arni_processing.specification.Specification.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the MetadataTuple with the given key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) &#8211; The identifier for the stored measurement.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A MetadataTuple containing the limits in its value field.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification.Specification.has_field">
+<tt class="descname">has_field</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#arni_processing.specification.Specification.has_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether a field is defined in this specification.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>field</strong> (<em>str</em>) &#8211; The metadata field to check for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.specification.Specification.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_processing.specification.Specification.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all stored keys.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list(str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.metadata_storage">
+<span id="metadatastorage"></span><h2>MetadataStorage<a class="headerlink" href="#module-arni_processing.metadata_storage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.metadata_storage.MetadataStorage">
+<em class="property">class </em><tt class="descclassname">arni_processing.metadata_storage.</tt><tt class="descname">MetadataStorage</tt><big>(</big><em>duration=300000</em><big>)</big><a class="headerlink" href="#arni_processing.metadata_storage.MetadataStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MetadataStorage holds StorageContainer objects with raw topic data and the rated values
+and can provide them on request.</p>
+<dl class="method">
+<dt id="arni_processing.metadata_storage.MetadataStorage.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_processing.metadata_storage.MetadataStorage.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the whole storage.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.metadata_storage.MetadataStorage.get">
+<tt class="descname">get</tt><big>(</big><em>identifier='*', timestamp=rospy.Time[0]</em><big>)</big><a class="headerlink" href="#arni_processing.metadata_storage.MetadataStorage.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all StorageContainers for a given identifier since a given timestamp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identifier</strong> (<em>str.</em>) &#8211; The identifier to return StorageContainer objects for. Use <tt class="docutils literal"><span class="pre">*</span></tt> to get all.</li>
+<li><strong>timestamp</strong> (<em>rospy.Time.</em>) &#8211; A timestamp marking the point of the oldest data you want. 0 returns all.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_processing.metadata_storage.MetadataStorage.store">
+<tt class="descname">store</tt><big>(</big><em>container</em><big>)</big><a class="headerlink" href="#arni_processing.metadata_storage.MetadataStorage.store" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores a given StorageContainer object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> &#8211; The data to store.</td>
+</tr>
+</tbody>
+</table>
+<p>:type container StorageContainer</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.storage_container">
+<span id="storagecontainer"></span><h2>StorageContainer<a class="headerlink" href="#module-arni_processing.storage_container" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.storage_container.StorageContainer">
+<em class="property">class </em><tt class="descclassname">arni_processing.storage_container.</tt><tt class="descname">StorageContainer</tt><big>(</big><em>timestamp</em>, <em>identifier</em>, <em>data_raw</em>, <em>data_rated</em><big>)</big><a class="headerlink" href="#arni_processing.storage_container.StorageContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the data received from the ros topics, the rated data, the time it got rated and the
+seuid identifying the package.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_processing.metadata_tuple">
+<span id="metadatatuple"></span><h2>MetadataTuple<a class="headerlink" href="#module-arni_processing.metadata_tuple" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_processing.metadata_tuple.MetadataTuple">
+<em class="property">class </em><tt class="descclassname">arni_processing.metadata_tuple.</tt><tt class="descname">MetadataTuple</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#arni_processing.metadata_tuple.MetadataTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores any kind of value for a certain key.
+Specifications storing values indicating limits,
+Metadata storing absolute actual values.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Processing statistics</a><ul>
+<li><a class="reference internal" href="#startnode">StartNode</a></li>
+<li><a class="reference internal" href="#module-arni_processing.monitoring_node">MonitoringNode</a></li>
+<li><a class="reference internal" href="#module-arni_processing.rated_statistics">RatedStatisticsContainer</a></li>
+<li><a class="reference internal" href="#module-arni_processing.specification_handler">SpecificationHandler</a></li>
+<li><a class="reference internal" href="#module-arni_processing.specification">Specification</a></li>
+<li><a class="reference internal" href="#module-arni_processing.metadata_storage">MetadataStorage</a></li>
+<li><a class="reference internal" href="#module-arni_processing.storage_container">StorageContainer</a></li>
+<li><a class="reference internal" href="#module-arni_processing.metadata_tuple">MetadataTuple</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="countermeasure.html"
+                        title="previous chapter">Countermeasures</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/processing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="countermeasure.html" title="Countermeasures"
+             >previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
