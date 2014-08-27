@@ -21,6 +21,7 @@ import os
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_countermeasure/src/arni_countermeasure'))
 sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_processing/src/arni_processing'))
+sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_core/src/arni_core'))
 
 # -- General configuration ------------------------------------------------
 

@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Definitions &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="definitions">
+<h1>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="seuid">
+<h2>Seuid<a class="headerlink" href="#seuid" title="Permalink to this headline">¶</a></h2>
+<p>A seuid (statistics entity unique identifier) identifies a certain node, host, connection (a topic, a subscriber and a publisher) or a topic following the this pattern:</p>
+<ul class="simple">
+<li>Hosts: h!127.0.0.1</li>
+<li>Nodes: n!/my_node</li>
+<li>Topics: t!/topic_name</li>
+<li>Connections: c!subscriber!topic!publisher</li>
+</ul>
+<p>arni_core offers a SEUID class:</p>
+<div class="section" id="module-arni_core.helper">
+<span id="seuid-class"></span><h3>SEUID class<a class="headerlink" href="#module-arni_core.helper" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="arni_core.helper.SEUID">
+<em class="property">class </em><tt class="descclassname">arni_core.helper.</tt><tt class="descname">SEUID</tt><big>(</big><em>identifier=None</em><big>)</big><a class="headerlink" href="#arni_core.helper.SEUID" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class providing several actions for a seuid.</p>
+<dl class="method">
+<dt id="arni_core.helper.SEUID.from_message">
+<tt class="descname">from_message</tt><big>(</big><em>msg</em><big>)</big><a class="headerlink" href="#arni_core.helper.SEUID.from_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a SEUID from a Message object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> &#8211; A Message object of type arni_msgs.msg.HostStatistics, arni_msgs.msg.NodeStatistics or
+rosgraph_msgs.msg.TopicStatistics</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises TypeError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">If the parameter is none of the mentioned messagestypes.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_core.helper.SEUID.get_seuid">
+<tt class="descname">get_seuid</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#arni_core.helper.SEUID.get_seuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the seuid for a specified component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>field</strong> &#8211; Can be &#8220;host&#8221;, &#8220;topic&#8221;, &#8220;subscriber&#8221;, &#8220;publisher&#8221; or &#8220;node&#8221;.
+Only if the SEUID object contains this key</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A seuid (str)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>KeyError</strong> &#8211; When the current SEUID does not contain the given field since it has a different type</li>
+<li><strong>AttributeError</strong> &#8211; When the given parameter is none of the above.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_core.helper.SEUID.is_valid">
+<tt class="descname">is_valid</tt><big>(</big><em>identifier=None</em><big>)</big><a class="headerlink" href="#arni_core.helper.SEUID.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether the given parameter is a valid seuid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identifier</strong> &#8211; A string presenting a seuid to validate.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True, if the given parameter is a valid seuid, false if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_core.helper.SEUID.serialize">
+<tt class="descname">serialize</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_core.helper.SEUID.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes the seuid for use in topics and parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Escapes !, / and .</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arni_core.helper.is_seuid">
+<tt class="descclassname">arni_core.helper.</tt><tt class="descname">is_seuid</tt><big>(</big><em>seuid</em><big>)</big><a class="headerlink" href="#arni_core.helper.is_seuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether the given parameter is a valid seuid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seuid</strong> &#8211; A string presenting a seuid to validate.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True, if the given parameter is a valid seuid, false if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="arni_core.helper.underscore_ip">
+<tt class="descclassname">arni_core.helper.</tt><tt class="descname">underscore_ip</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#arni_core.helper.underscore_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an ipv4 adress and replaces dots with underscores.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Definitions</a><ul>
+<li><a class="reference internal" href="#seuid">Seuid</a><ul>
+<li><a class="reference internal" href="#module-arni_core.helper">SEUID class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/definitions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

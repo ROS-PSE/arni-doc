@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parameters &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
+    <link rel="next" title="arni_countermeasure" href="countermeasure.html" />
+    <link rel="prev" title="Welcome to ROS - Advanced Network Introspection’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="countermeasure.html" title="arni_countermeasure"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to ROS - Advanced Network Introspection’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="parameters">
+<h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arni-processing">
+<h2>arni_processing<a class="headerlink" href="#arni-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rating-specifications">
+<h3>Rating Specifications<a class="headerlink" href="#rating-specifications" title="Permalink to this headline">¶</a></h3>
+<p>The processing node rates the incoming statistics based on given specifications.
+They are read from the namespace <tt class="docutils literal"><span class="pre">/arni/specifications</span></tt>. There you might give your desired specifications for a given <a class="reference external" href="./definitions.html#seuid">seuid</a> according to this format:</p>
+<div class="highlight-python"><div class="highlight"><pre>- n!example_node: # a seuid
+    measurement1: [minvalue, maxvalue]
+    # or
+    measurement2: [value, deviation, &quot;relative&quot;]
+</pre></div>
+</div>
+<p>Note that the measurement fields can be every field in the respective <a class="reference external" href="https://github.com/ROS-PSE/arni/tree/master/arni_msgs/msg">messagetypes</a>.
+View a list of all fields <a class="reference external" href="./specifications.html">here</a>.</p>
+</div>
+<div class="section" id="rating-topics">
+<h3>Rating Topics<a class="headerlink" href="#rating-topics" title="Permalink to this headline">¶</a></h3>
+<p>The parameter in <tt class="docutils literal"><span class="pre">/arni/aggregation_window</span></tt> sets the time window after which topics get aggregated and rated. It&#8217;s default is set to 3(seconds).</p>
+</div>
+<div class="section" id="data-storage">
+<h3>Data Storage<a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h3>
+<p>The storage cleans itself and removes data older than <tt class="docutils literal"><span class="pre">/arni/storage/timeout</span></tt> which is set to 5 minutes (<tt class="docutils literal"><span class="pre">300000ms</span></tt>) by default. It expects an integer representing milliseconds.
+This feature can be disabled via the boolean parameter <tt class="docutils literal"><span class="pre">/arni/storage/auto_cleanup</span></tt> which is set to <tt class="docutils literal"><span class="pre">True</span></tt> by default.
+The cleanup interval can be set via the float parameter <tt class="docutils literal"><span class="pre">/arni/storage/cleanup_timer</span></tt> which expects seconds and is set to 30 by default.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Parameters</a><ul>
+<li><a class="reference internal" href="#arni-processing">arni_processing</a><ul>
+<li><a class="reference internal" href="#rating-specifications">Rating Specifications</a></li>
+<li><a class="reference internal" href="#rating-topics">Rating Topics</a></li>
+<li><a class="reference internal" href="#data-storage">Data Storage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to ROS - Advanced Network Introspection&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="countermeasure.html"
+                        title="next chapter">arni_countermeasure</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/parameters.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="countermeasure.html" title="arni_countermeasure"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to ROS - Advanced Network Introspection’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
