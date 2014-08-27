@@ -1,0 +1,1239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Arni Gui &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
+    <link rel="next" title="Rqt Arni Gui Overview" href="rqt_arni_gui_overview.html" />
+    <link rel="prev" title="Arni Countermeasure" href="arni_countermeasure.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rqt_arni_gui_overview.html" title="Rqt Arni Gui Overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arni_countermeasure.html" title="Arni Countermeasure"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="arni-gui">
+<h1>Arni Gui<a class="headerlink" href="#arni-gui" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-arni_gui.node_item">
+<span id="nodeitem"></span><h2>NodeItem<a class="headerlink" href="#module-arni_gui.node_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.node_item.NodeItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.node_item.</tt><tt class="descname">NodeItem</tt><big>(</big><em>seuid</em>, <em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.node_item.NodeItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A NodeItem represents a node with all of its data. It also has a interface to start/stop/restart nodes.</p>
+<dl class="method">
+<dt id="arni_gui.node_item.NodeItem.execute_action">
+<tt class="descname">execute_action</tt><big>(</big><em>action</em><big>)</big><a class="headerlink" href="#arni_gui.node_item.NodeItem.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a signal to top or restart the node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<em>RemoteAction</em>) &#8211; action to be executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.node_item.NodeItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.node_item.NodeItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detailed data of the NodeItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.node_item.NodeItem.get_plotable_items">
+<tt class="descname">get_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.node_item.NodeItem.get_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns items for the plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.item_filter_proxy">
+<span id="itemfilterproxy"></span><h2>ItemFilterProxy<a class="headerlink" href="#module-arni_gui.item_filter_proxy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy">
+<em class="property">class </em><tt class="descclassname">arni_gui.item_filter_proxy.</tt><tt class="descname">ItemFilterProxy</tt><big>(</big><em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ItemFilterProxy which is a QSortFilterProxyModel helps to filter the data going to the view so the user only
+sees what he wants to see (which he can modified by telling the view).</p>
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.filterAcceptsRow">
+<tt class="descname">filterAcceptsRow</tt><big>(</big><em>source_row</em>, <em>source_parent</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.filterAcceptsRow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells by analysing the given row if it should be shown or not. This behaviour can be modified via
+setFilterRegExp method so that e.g. only the entries of a specific host can be shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_row</strong> (<em>int</em>) &#8211; the source of the parent</li>
+<li><strong>source_parent</strong> (<em>QModelIndex</em>) &#8211; the source of the parent</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.lessThan">
+<tt class="descname">lessThan</tt><big>(</big><em>left</em>, <em>right</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.lessThan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the sorting of behaviour when comparing two entries of model item by telling how to compare these.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>left</strong> (<em>QModellIndex</em>) &#8211; the left-hand side</li>
+<li><strong>right</strong> (<em>QModellIndex</em>) &#8211; the right-hand side</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.show_connections">
+<tt class="descname">show_connections</tt><big>(</big><em>show_connections</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.show_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set true if connections should be shown</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>show_connections</strong> (<em>bool</em>) &#8211; true if connections should be shown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.show_hosts">
+<tt class="descname">show_hosts</tt><big>(</big><em>show_hosts</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.show_hosts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set true if hosts should be shown</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>show_hosts</strong> (<em>bool</em>) &#8211; true if hosts should be shown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.show_nodes">
+<tt class="descname">show_nodes</tt><big>(</big><em>show_nodes</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.show_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set true if nodes should be shown</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>show_nodes</strong> (<em>bool</em>) &#8211; true if nodes should be shown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.item_filter_proxy.ItemFilterProxy.show_topics">
+<tt class="descname">show_topics</tt><big>(</big><em>show_topics</em><big>)</big><a class="headerlink" href="#arni_gui.item_filter_proxy.ItemFilterProxy.show_topics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set true if topics should be shown</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>show_topics</strong> (<em>bool</em>) &#8211; true if topics should be shown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.buffer_thread">
+<span id="bufferthread"></span><h2>BufferThread<a class="headerlink" href="#module-arni_gui.buffer_thread" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.buffer_thread.BufferThread">
+<em class="property">class </em><tt class="descclassname">arni_gui.buffer_thread.</tt><tt class="descname">BufferThread</tt><big>(</big><em>model</em><big>)</big><a class="headerlink" href="#arni_gui.buffer_thread.BufferThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>This thread should buffer the incoming data and regularly update the model and hence also the model.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.root_item">
+<span id="rootitem"></span><h2>RootItem<a class="headerlink" href="#module-arni_gui.root_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.root_item.RootItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.root_item.</tt><tt class="descname">RootItem</tt><big>(</big><em>seuid</em>, <em>parent=&lt;PyQt4.QtCore.QObject object at 0x2b2236214478&gt;</em>, <em>*args</em><big>)</big><a class="headerlink" href="#arni_gui.root_item.RootItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>The RootItem represents the parent of the ROSModel</p>
+<dl class="method">
+<dt id="arni_gui.root_item.RootItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.root_item.RootItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detailed data of the NodeItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.root_item.RootItem.get_plotable_items">
+<tt class="descname">get_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.root_item.RootItem.get_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns items for the plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.root_item.RootItem.units_of_plotable_items">
+<tt class="descname">units_of_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.root_item.RootItem.units_of_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the units of the items for the plot.</p>
+<p>:returns str[]</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.topic_item">
+<span id="topicitem"></span><h2>TopicItem<a class="headerlink" href="#module-arni_gui.topic_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.topic_item.TopicItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.topic_item.</tt><tt class="descname">TopicItem</tt><big>(</big><em>seuid</em>, <em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.topic_item.TopicItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A TopicItem represents a specific topic which contains many connections and has attributes like the number of sent messages.</p>
+<dl class="method">
+<dt id="arni_gui.topic_item.TopicItem.execute_action">
+<tt class="descname">execute_action</tt><big>(</big><em>action</em><big>)</big><a class="headerlink" href="#arni_gui.topic_item.TopicItem.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not senseful, throws an exception.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<em>RemoteAction</em>) &#8211; action to be executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.topic_item.TopicItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.topic_item.TopicItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detailed data of the TopicItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.topic_item.TopicItem.get_plotable_items">
+<tt class="descname">get_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.topic_item.TopicItem.get_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns items for the plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.abstract_item">
+<span id="abstractitem"></span><h2>AbstractItem<a class="headerlink" href="#module-arni_gui.abstract_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.abstract_item.AbstractItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.abstract_item.</tt><tt class="descname">AbstractItem</tt><big>(</big><em>seuid</em>, <em>parent=None</em>, <em>*args</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a unified interface to access the items of the model.
+INTERNAL: WARNING! Whenever the key-values at the beginning are not set right, the oddest things may occur!</p>
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.append_child">
+<tt class="descname">append_child</tt><big>(</big><em>child</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.append_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a child to the list of childs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>child</strong> (<em>AbstractItem</em>) &#8211; the child item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.append_data">
+<tt class="descname">append_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.append_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to the data of the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; the data to append in key value form</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.append_data_dict">
+<tt class="descname">append_data_dict</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.append_data_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to the data of the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; the data to append in key value form</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.append_rated_data_dict">
+<tt class="descname">append_rated_data_dict</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.append_rated_data_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to the rate_data of the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; the data to append in key value from</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.child_count">
+<tt class="descname">child_count</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.child_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of children from the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.column_count">
+<tt class="descname">column_count</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.column_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of columns.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.delete_items_older_than">
+<tt class="descname">delete_items_older_than</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.delete_items_older_than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all items which are older than time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time</strong> (<em>rospy.Time</em>) &#8211; the upper bound</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.execute_action">
+<tt class="descname">execute_action</tt><big>(</big><em>action</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a action on the current item like stop or restart. Calls to this method should be
+redirected to the remote host on executed there.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>acion</strong> &#8211; the action which should be executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_child">
+<tt class="descname">get_child</tt><big>(</big><em>row</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the child at the position row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>row</strong> (<em>int</em>) &#8211; the index of the row</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">AbstractItem</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_childs">
+<tt class="descname">get_childs</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_childs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list with all children.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns detailed description of current state as html text.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_items_older_than">
+<tt class="descname">get_items_older_than</tt><big>(</big><em>time</em>, <em>*args</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_items_older_than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all items which are older than time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>time</strong> (<em>rospy.Time</em>) &#8211; the upper bound in seconds</li>
+<li><strong>kwargs</strong> (<em>str</em>) &#8211; the keys to the dict</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict of lists</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_items_younger_than">
+<tt class="descname">get_items_younger_than</tt><big>(</big><em>time</em>, <em>*args</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_items_younger_than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all items which are younger than time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time</strong> (<em>rospy.Time</em>) &#8211; the lower bound in seconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict of lists</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_latest_data">
+<tt class="descname">get_latest_data</tt><big>(</big><em>*kwargs</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_latest_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the latest dict of the data_list or the item of the dict with the given key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>str</em>) &#8211; the keys to the dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict or the item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_seuid">
+<tt class="descname">get_seuid</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_seuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the seuid of the Abstractitem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.get_state">
+<tt class="descname">get_state</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the state of the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.parent">
+<tt class="descname">parent</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent of this or None if there is no parent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractItem</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.row">
+<tt class="descname">row</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the Item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.abstract_item.AbstractItem.update_rated_data">
+<tt class="descname">update_rated_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#arni_gui.abstract_item.AbstractItem.update_rated_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to the rated_data of the AbstractItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>dict</em>) &#8211; the data to append in key value form</li>
+<li><strong>window_start</strong> (<em>Time</em>) &#8211; the time of window_start</li>
+<li><strong>window_stop</strong> (<em>Time</em>) &#8211; the time of window_stop</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.host_item">
+<span id="hostitem"></span><h2>HostItem<a class="headerlink" href="#module-arni_gui.host_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.host_item.HostItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.host_item.</tt><tt class="descname">HostItem</tt><big>(</big><em>seuid</em>, <em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.host_item.HostItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A HostItem represents a host with all its data.</p>
+<dl class="method">
+<dt id="arni_gui.host_item.HostItem.execute_action">
+<tt class="descname">execute_action</tt><big>(</big><em>action</em><big>)</big><a class="headerlink" href="#arni_gui.host_item.HostItem.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a signal to stop or restart a host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<em>RemoteAction</em>) &#8211; action to be executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.host_item.HostItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.host_item.HostItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detailed data of the HostItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.host_item.HostItem.get_plotable_items">
+<tt class="descname">get_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.host_item.HostItem.get_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns items for the plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.log_filter_proxy">
+<span id="logfilterproxy"></span><h2>LogFilterProxy<a class="headerlink" href="#module-arni_gui.log_filter_proxy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.log_filter_proxy.LogFilterProxy">
+<em class="property">class </em><tt class="descclassname">arni_gui.log_filter_proxy.</tt><tt class="descname">LogFilterProxy</tt><big>(</big><em>parent=&lt;PyQt4.QtCore.QObject object at 0x2b22364c0348&gt;</em><big>)</big><a class="headerlink" href="#arni_gui.log_filter_proxy.LogFilterProxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LogFilterProxy will especially be used to filter the complete log e.g. by a specific node.
+This function is needed in the SelectionWidget where of course only the log of the current selection
+should be shown.</p>
+<dl class="method">
+<dt id="arni_gui.log_filter_proxy.LogFilterProxy.filterAcceptsRow">
+<tt class="descname">filterAcceptsRow</tt><big>(</big><em>source_row</em>, <em>source_parent</em><big>)</big><a class="headerlink" href="#arni_gui.log_filter_proxy.LogFilterProxy.filterAcceptsRow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Tells by analysing the given row if it should be shown or not. This behaviour can be modified via setFilterRegExp</dt>
+<dd>method so that e.g. only the entries of a specific host can be shown.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_row</strong> (<em>int</em>) &#8211; the source row</li>
+<li><strong>source_parent</strong> (<em>QModelIndex</em>) &#8211; the source of the parent</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.log_filter_proxy.LogFilterProxy.filter_by_item">
+<tt class="descname">filter_by_item</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#arni_gui.log_filter_proxy.LogFilterProxy.filter_by_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to tell the filter by which item should filter. If the AbstractItem is None all log entries should be shown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> (<em>AbstractItem</em>) &#8211; the item by which the filter should filter</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.log_filter_proxy.LogFilterProxy.lessThan">
+<tt class="descname">lessThan</tt><big>(</big><em>left</em>, <em>right</em><big>)</big><a class="headerlink" href="#arni_gui.log_filter_proxy.LogFilterProxy.lessThan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the sorting of behaviour when comparing two entries of model item by telling how to compare these.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>left</strong> (<em>QModelIndex</em>) &#8211; the left-hand side</li>
+<li><strong>right</strong> (<em>QModelIndex</em>) &#8211; the right-hand side</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.ros_model">
+<span id="rosmodel"></span><h2>RosModel<a class="headerlink" href="#module-arni_gui.ros_model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.ros_model.QAbstractItemModelSingleton">
+<em class="property">class </em><tt class="descclassname">arni_gui.ros_model.</tt><tt class="descname">QAbstractItemModelSingleton</tt><a class="headerlink" href="#arni_gui.ros_model.QAbstractItemModelSingleton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper-Class which allow ROSModel to be a Singleton</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="arni_gui.ros_model.ROSModel">
+<em class="property">class </em><tt class="descclassname">arni_gui.ros_model.</tt><tt class="descname">ROSModel</tt><big>(</big><em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables automated updates of the view, it represents the data as a QtModel</p>
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.add_log_entry">
+<tt class="descname">add_log_entry</tt><big>(</big><em>type</em>, <em>date</em>, <em>location</em>, <em>message</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.add_log_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a log entry to the log_model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>str</em>) &#8211; the type of the log_entry</li>
+<li><strong>date</strong> (<em>Time</em>) &#8211; the time of the log_entry</li>
+<li><strong>location</strong> (<em>str</em>) &#8211; the location, were the fault/info/... occured</li>
+<li><strong>message</strong> (<em>str</em>) &#8211; the message of the log_entry</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.columnCount">
+<tt class="descname">columnCount</tt><big>(</big><em>parent</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.columnCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the amount of columns in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> (<em>QModelIndex</em>) &#8211; the parent</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.data">
+<tt class="descname">data</tt><big>(</big><em>index</em>, <em>role=0</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data of an item at the given index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> (<em>QModelIndex</em>) &#8211; the position from which the data is wanted</li>
+<li><strong>role</strong> (<em>int</em>) &#8211; the role that should be used</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.flags">
+<tt class="descname">flags</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the flags of the item at the given index (like Qt::ItemIsEnabled).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<em>QModelIndex</em>) &#8211; the index of the item</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">ItemFlags</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.get_item_by_seuid">
+<tt class="descname">get_item_by_seuid</tt><big>(</big><em>seuid</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.get_item_by_seuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an item according to the given seuid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seuid</strong> (<em>str</em>) &#8211; the seuid of the wanted item</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">AbstractItem</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.get_log_model">
+<tt class="descname">get_log_model</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.get_log_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log_model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">QStandardItemModel</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.get_overview_data_since">
+<tt class="descname">get_overview_data_since</tt><big>(</big><em>time=None</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.get_overview_data_since" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the info needed for the OverviewWidget as a dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time</strong> (<em>rospy.Time</em>) &#8211; the lower bound from the intervall</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict of values</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.get_overview_text">
+<tt class="descname">get_overview_text</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.get_overview_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the overview-data for the overview-widget.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.get_root_item">
+<tt class="descname">get_root_item</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.get_root_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the root item of the ROSModel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractItem</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.headerData">
+<tt class="descname">headerData</tt><big>(</big><em>section</em>, <em>orientation</em>, <em>role</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.headerData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the headerData at the given section.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>section</strong> (<em>int</em>) &#8211; </li>
+<li><strong>orientation</strong> (<em>Orientation</em>) &#8211; </li>
+<li><strong>role</strong> (<em>int</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">QVariant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.index">
+<tt class="descname">index</tt><big>(</big><em>row</em>, <em>column</em>, <em>parent</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of an item at the given column/row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>row</strong> (<em>int</em>) &#8211; the index of the row</li>
+<li><strong>column</strong> (<em>int</em>) &#8211; the index of the column</li>
+<li><strong>parent</strong> (<em>QModelIndex</em>) &#8211; the parent</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">QModelIndex</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.parent">
+<tt class="descname">parent</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.parent" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Returns the QModelIndex of the parent from the child item speci</div></blockquote>
+<p>ed via its index.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param index:</th><td class="field-body">the index of the child</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type index:</th><td class="field-body">QModelIndex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">QModelIndex</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.rowCount">
+<tt class="descname">rowCount</tt><big>(</big><em>parent</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.rowCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the amount of rows in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> (<em>QModelIndex</em>) &#8211; the parent</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.ros_model.ROSModel.update_model">
+<tt class="descname">update_model</tt><big>(</big><em>rated_statistics</em>, <em>topic_statistics</em>, <em>host_statistics</em>, <em>node_statistics</em><big>)</big><a class="headerlink" href="#arni_gui.ros_model.ROSModel.update_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the model by using the items of the list. The items will be of the message types.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rated_statistics</strong> (<em>list</em>) &#8211; the rated_statistics buffer</li>
+<li><strong>topic_statistics</strong> (<em>list</em>) &#8211; the topic_statistics buffer</li>
+<li><strong>node_statistics</strong> (<em>list</em>) &#8211; the node_statistics buffer</li>
+<li><strong>host_statistics</strong> (<em>list</em>) &#8211; the host_statistics buffer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="remoteaction">
+<h2>RemoteAction<a class="headerlink" href="#remoteaction" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-arni_gui.size_delegate">
+<span id="sizedelegate"></span><h2>SizeDelegate<a class="headerlink" href="#module-arni_gui.size_delegate" title="Permalink to this headline">¶</a></h2>
+<p>Would probably already work.
+The todos should be fixed earlier or later.</p>
+<dl class="class">
+<dt id="arni_gui.size_delegate.SizeDelegate">
+<em class="property">class </em><tt class="descclassname">arni_gui.size_delegate.</tt><tt class="descname">SizeDelegate</tt><big>(</big><em>parent=&lt;PyQt4.QtCore.QObject object at 0x2b2236214348&gt;</em><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes it possible to change the font size of the Gui-Plugin content.</p>
+<dl class="method">
+<dt id="arni_gui.size_delegate.SizeDelegate.initStyleOption">
+<tt class="descname">initStyleOption</tt><big>(</big><em>option</em>, <em>index</em><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate.initStyleOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manupulates the background-color of a cell in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>option</strong> (<em>QStyleOptionViewItem</em>) &#8211; The options parameter</li>
+<li><strong>index</strong> (<em>QModelIndex</em>) &#8211; The QModelIndex that will be painted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.size_delegate.SizeDelegate.paint">
+<tt class="descname">paint</tt><big>(</big><em>painter</em>, <em>option</em>, <em>index</em><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate.paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines how the items of the model will be painted in the view. Can be used  to draw e.g. bigger or smaller fonts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>painter</strong> (<em>QPainter</em>) &#8211; The painter which will be used to paint</li>
+<li><strong>option</strong> (<em>QStyleOptionViewItem</em>) &#8211; The options parameter</li>
+<li><strong>index</strong> (<em>QModelIndex</em>) &#8211; The QModelIndex that will be painted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.size_delegate.SizeDelegate.set_bigger_font_size">
+<tt class="descname">set_bigger_font_size</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate.set_bigger_font_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increases the displayed font-size.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.size_delegate.SizeDelegate.set_smaller_font_size">
+<tt class="descname">set_smaller_font_size</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate.set_smaller_font_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decreases the displayed font-size.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.size_delegate.SizeDelegate.sizeHint">
+<tt class="descname">sizeHint</tt><big>(</big><em>option</em>, <em>index</em><big>)</big><a class="headerlink" href="#arni_gui.size_delegate.SizeDelegate.sizeHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manupulates the size of a cell in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>option</strong> (<em>QStyleOptionViewItem</em>) &#8211; The options parameter</li>
+<li><strong>index</strong> (<em>QModelIndex</em>) &#8211; The QModelIndex that will be painted</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">QSize</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.connection_item">
+<span id="connectionitem"></span><h2>ConnectionItem<a class="headerlink" href="#module-arni_gui.connection_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.connection_item.ConnectionItem">
+<em class="property">class </em><tt class="descclassname">arni_gui.connection_item.</tt><tt class="descname">ConnectionItem</tt><big>(</big><em>seuid</em>, <em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.connection_item.ConnectionItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ConnectionItem reresents the connection between a publisher and a subscriber and the topic they are publishing / listening on</p>
+<dl class="method">
+<dt id="arni_gui.connection_item.ConnectionItem.execute_action">
+<tt class="descname">execute_action</tt><big>(</big><em>action</em><big>)</big><a class="headerlink" href="#arni_gui.connection_item.ConnectionItem.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not senseful</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>action</strong> (<em>RemoteAction</em>) &#8211; action to be executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.connection_item.ConnectionItem.get_detailed_data">
+<tt class="descname">get_detailed_data</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.connection_item.ConnectionItem.get_detailed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detailed data of the ConnectionItem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_gui.connection_item.ConnectionItem.get_plotable_items">
+<tt class="descname">get_plotable_items</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_gui.connection_item.ConnectionItem.get_plotable_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns items for the plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.helper_functions">
+<span id="helperfunctions"></span><h2>HelperFunctions<a class="headerlink" href="#module-arni_gui.helper_functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="arni_gui.helper_functions.choose_brush">
+<tt class="descclassname">arni_gui.helper_functions.</tt><tt class="descname">choose_brush</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#arni_gui.helper_functions.choose_brush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chooses the brush according o the content of a cell.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<em>QModelIndex</em>) &#8211; the index of the item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_gui.log_delegate">
+<span id="logdelegate"></span><h2>LogDelegate<a class="headerlink" href="#module-arni_gui.log_delegate" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_gui.log_delegate.LogDelegate">
+<em class="property">class </em><tt class="descclassname">arni_gui.log_delegate.</tt><tt class="descname">LogDelegate</tt><big>(</big><em>parent=None</em><big>)</big><a class="headerlink" href="#arni_gui.log_delegate.LogDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes it possible to change the font size of the Gui-Plugin content.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Arni Gui</a><ul>
+<li><a class="reference internal" href="#module-arni_gui.node_item">NodeItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.item_filter_proxy">ItemFilterProxy</a></li>
+<li><a class="reference internal" href="#module-arni_gui.buffer_thread">BufferThread</a></li>
+<li><a class="reference internal" href="#module-arni_gui.root_item">RootItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.topic_item">TopicItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.abstract_item">AbstractItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.host_item">HostItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.log_filter_proxy">LogFilterProxy</a></li>
+<li><a class="reference internal" href="#module-arni_gui.ros_model">RosModel</a></li>
+<li><a class="reference internal" href="#remoteaction">RemoteAction</a></li>
+<li><a class="reference internal" href="#module-arni_gui.size_delegate">SizeDelegate</a></li>
+<li><a class="reference internal" href="#module-arni_gui.connection_item">ConnectionItem</a></li>
+<li><a class="reference internal" href="#module-arni_gui.helper_functions">HelperFunctions</a></li>
+<li><a class="reference internal" href="#module-arni_gui.log_delegate">LogDelegate</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arni_countermeasure.html"
+                        title="previous chapter">Arni Countermeasure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rqt_arni_gui_overview.html"
+                        title="next chapter">Rqt Arni Gui Overview</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/arni_gui.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rqt_arni_gui_overview.html" title="Rqt Arni Gui Overview"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arni_countermeasure.html" title="Arni Countermeasure"
+             >previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Specifications &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="specifications">
+<h1>Specifications<a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h1>
+<p>Specifications are saved to the parameterserver into the namespace <tt class="docutils literal"><span class="pre">/arni/specifications</span></tt>. They are expected in the following format:</p>
+<div class="highlight-python"><div class="highlight"><pre>- n!example_node: # a seuid
+    measurement1: [minvalue, maxvalue]
+    # or
+    measurement2: [value, deviation, &quot;relative&quot;]
+</pre></div>
+</div>
+<p>Available measurement keys are listed below:</p>
+<div class="section" id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>node_cpu_usage_mean (float32)</li>
+<li>node_cpu_usage_stddev (float32)</li>
+<li>node_cpu_usage_max (float32)</li>
+<li>node_cpu_usage_core_mean  (float32[])</li>
+<li>node_cpu_usage_core_stddev  (float32[])</li>
+<li>node_cpu_usage_core_max  (float32[])</li>
+<li>node_gpu_usage_mean  (float32[])</li>
+<li>node_gpu_usage_stddev  (float32[])</li>
+<li>node_gpu_usage_max  (float32[])</li>
+<li>node_ramusage_mean  (float32)</li>
+<li>node_ramusage_stddev  (float32)</li>
+<li>node_ramusage_max  (float32)</li>
+<li>node_message_frequency_mean (float32)</li>
+<li>node_message_frequency_stddev (float32)</li>
+<li>node_message_frequency_max (float32)</li>
+<li>node_bandwidth_mean (float32)</li>
+<li>node_bandwidth_stddev (float32)</li>
+<li>node_bandwidth_max (float32)</li>
+<li>node_write_mean (float32)</li>
+<li>node_write_stddev (float32)</li>
+<li>node_write_max (float32)</li>
+<li>node_read_mean (float32)</li>
+<li>node_read_stddev (float32)</li>
+<li>node_read_max (float32)</li>
+</ul>
+</div>
+<div class="section" id="hosts">
+<h2>Hosts<a class="headerlink" href="#hosts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>cpu_temp_mean (float32)</li>
+<li>cpu_temp_stddev (float32)</li>
+<li>cpu_temp_max (float32)</li>
+<li>cpu_usage_mean (float32)</li>
+<li>cpu_usage_stddev (float32)</li>
+<li>cpu_usage_max (float32)</li>
+<li>cpu_usage_core_mean (float32[])</li>
+<li>cpu_usage_core_stddev (float32[])</li>
+<li>cpu_usage_core_max (float32[])</li>
+<li>cpu_temp_core (float32[])</li>
+<li>cpu_temp_core_mean (float32[])</li>
+<li>cpu_temp_core_stddev (float32[])</li>
+<li>cpu_temp_core_max (float32[])</li>
+<li>gpu_temp_mean (float32[])</li>
+<li>gpu_temp_stddev (float32[])</li>
+<li>gpu_temp_max (float32[])</li>
+<li>gpu_usage_mean (float32[])</li>
+<li>gpu_usage_stddev (float32[])</li>
+<li>gpu_usage_max (float32[])</li>
+<li>ram_usage_mean (float32)</li>
+<li>ram_usage_stddev (float32)</li>
+<li>ram_usage_max (float32)</li>
+<li>interface_name (string[])</li>
+<li>message_frequency_mean (float32[])</li>
+<li>message_frequency_stddev (float32[])</li>
+<li>message_frequency_max (float32[])</li>
+<li>bandwidth_mean (float32[])</li>
+<li>bandwidth_stddev (float32[])</li>
+<li>bandwidth_max (float32[])</li>
+<li>drive_name (string[])</li>
+<li>drive_free_space (float32[])</li>
+<li>drive_read (float32[])</li>
+<li>drive_write  (float32[])</li>
+</ul>
+</div>
+<div class="section" id="connections">
+<h2>Connections<a class="headerlink" href="#connections" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>dropped_msgs (int32)</li>
+<li>traffic (int32)</li>
+<li>period_mean (duration)</li>
+<li>period_stddev (duration)</li>
+<li>period_max (duration)</li>
+<li>stamp_age_mean (duration)</li>
+<li>stamp_age_stddev (duration)</li>
+<li>stamp_age_max (duration)</li>
+</ul>
+</div>
+<div class="section" id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>dropped_msgs (int)</li>
+<li>traffic (float)</li>
+<li>bandwidth (float)</li>
+<li>stamp_age_max (time)</li>
+<li>stamp_age_mean (time)</li>
+<li>packages (int)</li>
+<li>packages_per_second (float)</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Specifications</a><ul>
+<li><a class="reference internal" href="#nodes">Nodes</a></li>
+<li><a class="reference internal" href="#hosts">Hosts</a></li>
+<li><a class="reference internal" href="#connections">Connections</a></li>
+<li><a class="reference internal" href="#topics">Topics</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/specifications.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

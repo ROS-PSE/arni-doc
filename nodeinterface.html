@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Node Interface &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
+    <link rel="next" title="Processing statistics" href="processing.html" />
+    <link rel="prev" title="Parameters" href="parameters.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="processing.html" title="Processing statistics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="Parameters"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="node-interface">
+<h1>Node Interface<a class="headerlink" href="#node-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-arni_nodeinterface.host_statistics_handler">
+<span id="hoststatisticshandler"></span><h2>HostStatisticsHandler<a class="headerlink" href="#module-arni_nodeinterface.host_statistics_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.host_statistics_handler.</tt><tt class="descname">HostStatisticsHandler</tt><big>(</big><em>hostid</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a host , limited to one instance per host. 
+Collects statistics about the current state of the host and s
+ends them using the publisher-subscriber mechanism.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.execute_reaction">
+<tt class="descname">execute_reaction</tt><big>(</big><em>reaction</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.execute_reaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses through the reaction and 
+calls the appropriate method from the NodeManager. Uses ROS Services.
+Returns a message about operation&#8217;s success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reaction</strong> (<em>NodeReaction.</em>) &#8211; Reaction to be executed and node affected.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.get_node_info">
+<tt class="descname">get_node_info</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.get_node_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of all Nodes running on the host.
+Update the __node_list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.measure_status">
+<tt class="descname">measure_status</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.measure_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects information about the host&#8217;s current status using psutils.
+Triggered periodically.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.publish_status">
+<tt class="descname">publish_status</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.publish_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publishes the current status to a topic using ROS&#8217;s publisher-subscriber mechanism.
+Triggered periodically.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.remove_node">
+<tt class="descname">remove_node</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.remove_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the Node with the given id from the host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_id</strong> (<em>String</em>) &#8211; id of the node to be removed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.update_nodes">
+<tt class="descname">update_nodes</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_statistics_handler.HostStatisticsHandler.update_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>update the status of each node in its own threading</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_nodeinterface.host_status">
+<span id="hoststatus"></span><h2>HostStatus<a class="headerlink" href="#module-arni_nodeinterface.host_status" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.host_status.HostStatus">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.host_status.</tt><tt class="descname">HostStatus</tt><big>(</big><em>start</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of Status , to store 
+additional information used by hosts.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_bandwidth">
+<tt class="descname">add_bandwidth</tt><big>(</big><em>interface</em>, <em>bytes</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_bandwidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another  measured value, in bytes, to bandwidth belonging 
+to the given network interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>interface</strong> (<em>string</em>) &#8211; name of the network interface</li>
+<li><strong>bytes</strong> (<em>int</em>) &#8211; measured bytes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_cpu_temp">
+<tt class="descname">add_cpu_temp</tt><big>(</big><em>temp</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_cpu_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another measured value to cpu_temp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>temp</strong> (<em>int</em>) &#8211; measured temperature in celsius</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_cpu_temp_core">
+<tt class="descname">add_cpu_temp_core</tt><big>(</big><em>temps</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_cpu_temp_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another set of measured values to cpu_temp_core.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>temps</strong> &#8211; measured temperatures in celsius</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_drive_read">
+<tt class="descname">add_drive_read</tt><big>(</big><em>disk</em>, <em>byte</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_drive_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another  measured value, in bytes, to drive_read belonging 
+to the given disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>disk</strong> (<em>string</em>) &#8211; name of the disk</li>
+<li><strong>byte</strong> (<em>int</em>) &#8211; bytes read</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_drive_space">
+<tt class="descname">add_drive_space</tt><big>(</big><em>disk</em>, <em>space</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_drive_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the free space of a drive to the Dictionary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>disk</strong> (<em>string</em>) &#8211; name of the disk</li>
+<li><strong>space</strong> &#8211; free space</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_drive_write">
+<tt class="descname">add_drive_write</tt><big>(</big><em>disk</em>, <em>byte</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_drive_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another  measured value, in bytes, to drive_write belonging 
+to the given disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>disk</strong> (<em>string</em>) &#8211; name of the disk</li>
+<li><strong>byte</strong> (<em>int</em>) &#8211; bytes written</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_gpu_temp">
+<tt class="descname">add_gpu_temp</tt><big>(</big><em>temps</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_gpu_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another set of measured values to gpu_temp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>temp</strong> (<em>int[]</em>) &#8211; measured temperatures in celsius</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.add_msg_frequency">
+<tt class="descname">add_msg_frequency</tt><big>(</big><em>interface</em>, <em>freq</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.add_msg_frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another  measured value, in hertz, to msg_frequency belonging 
+to the given network interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>interface</strong> (<em>string</em>) &#8211; name of the network interface</li>
+<li><strong>freq</strong> (<em>int</em>) &#8211; measured frequency</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.host_status.HostStatus.reset_specific">
+<tt class="descname">reset_specific</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.host_status.HostStatus.reset_specific" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the values specific to Host or Nodes</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_nodeinterface.host_status.statistic_tuple">
+<tt class="descclassname">arni_nodeinterface.host_status.</tt><tt class="descname">statistic_tuple</tt><a class="headerlink" href="#arni_nodeinterface.host_status.statistic_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">statistic</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_nodeinterface.node_info">
+<span id="nodeinfo"></span><h2>NodeInfo<a class="headerlink" href="#module-arni_nodeinterface.node_info" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-arni_nodeinterface.node_manager">
+<span id="nodemanager"></span><h2>NodeManager<a class="headerlink" href="#module-arni_nodeinterface.node_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.node_manager.NodeManager">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.node_manager.</tt><tt class="descname">NodeManager</tt><a class="headerlink" href="#arni_nodeinterface.node_manager.NodeManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can restart or stop nodes or execute a countermeasure.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.node_manager.NodeManager.execute_command">
+<tt class="descname">execute_command</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_manager.NodeManager.execute_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a system call with the given arguments.
+Returns a message about operation&#8217;s success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<em>String</em>) &#8211; Arguments for the system call</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_manager.NodeManager.restart_node">
+<tt class="descname">restart_node</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_manager.NodeManager.restart_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts a node with the given id.
+Returns a message about operation&#8217;s success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_id</strong> (<em>NodeStatisticsHandler.</em>) &#8211; id of the node to be restarted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_manager.NodeManager.stop_node">
+<tt class="descname">stop_node</tt><big>(</big><em>node_id</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_manager.NodeManager.stop_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the node with the given id.
+Returns a message about operation&#8217;s success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_id</strong> (<em>String.</em>) &#8211; id of the node to be stopped.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_nodeinterface.node_statistics_handler">
+<span id="nodestatisticshandler"></span><h2>NodeStatisticsHandler<a class="headerlink" href="#module-arni_nodeinterface.node_statistics_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.node_statistics_handler.</tt><tt class="descname">NodeStatisticsHandler</tt><big>(</big><em>host_id</em>, <em>node_id</em>, <em>node_process</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds the statistics of an individual Node.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.measure_status">
+<tt class="descname">measure_status</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.measure_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects information about the node&#8217;s current status
+using psutils and rospy.statistics
+Triggered periodically.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.publish_status">
+<tt class="descname">publish_status</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.publish_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publishes the current status to a topic using ROS&#8217;s
+publisher-subscriber mechanism. Triggered periodically.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Topic:</th><td class="field-body">Topic to which the data should be published.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.receive_statistics">
+<tt class="descname">receive_statistics</tt><big>(</big><em>stats</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.receive_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives the statistics published by ROS Topic statistics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.register_subscriber">
+<tt class="descname">register_subscriber</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_statistics_handler.NodeStatisticsHandler.register_subscriber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the subscriber for Topicstatistics</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_nodeinterface.node_status">
+<span id="nodestatus"></span><h2>NodeStatus<a class="headerlink" href="#module-arni_nodeinterface.node_status" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.node_status.NodeStatus">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.node_status.</tt><tt class="descname">NodeStatus</tt><big>(</big><em>start</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of Status , to store additional information used by nodes.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.node_status.NodeStatus.add_node_bandwidth">
+<tt class="descname">add_node_bandwidth</tt><big>(</big><em>bytes</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus.add_node_bandwidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another measured value in bytes, taken
+from ROS topics statistics, to node_bandwidth.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bytes</strong> (<em>int</em>) &#8211; Bytes measured.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_status.NodeStatus.add_node_io">
+<tt class="descname">add_node_io</tt><big>(</big><em>read</em>, <em>write</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus.add_node_io" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another pair of measured disk I/O values 
+to node_read and node_write.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>read</strong> (<em>int</em>) &#8211; Bytes read.</li>
+<li><strong>write</strong> (<em>int</em>) &#8211; Bytes written.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_status.NodeStatus.add_node_msg_freq">
+<tt class="descname">add_node_msg_freq</tt><big>(</big><em>freq</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus.add_node_msg_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another measured value to node_msg_frequency,
+taken from ROS topics statistics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>freq</strong> &#8211; frequency of network calls.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_status.NodeStatus.calc_stats_specific">
+<tt class="descname">calc_stats_specific</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus.calc_stats_specific" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates statistics specific to nodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.node_status.NodeStatus.reset_specific">
+<tt class="descname">reset_specific</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.node_status.NodeStatus.reset_specific" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the values specific to Host or Nodes</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_nodeinterface.node_status.statistic_tuple">
+<tt class="descclassname">arni_nodeinterface.node_status.</tt><tt class="descname">statistic_tuple</tt><a class="headerlink" href="#arni_nodeinterface.node_status.statistic_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">statistic</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="runnode">
+<h2>RunNode<a class="headerlink" href="#runnode" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-arni_nodeinterface.statistics_handler">
+<span id="statisticshandler"></span><h2>StatisticsHandler<a class="headerlink" href="#module-arni_nodeinterface.statistics_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.statistics_handler.StatisticsHandler">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.statistics_handler.</tt><tt class="descname">StatisticsHandler</tt><big>(</big><em>_id</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.statistics_handler.StatisticsHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract Class to Handle Statistics of Hosts or Nodes.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.statistics_handler.StatisticsHandler.measure_status">
+<tt class="descname">measure_status</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.statistics_handler.StatisticsHandler.measure_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Periodically collects information about the
+current status.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.statistics_handler.StatisticsHandler.publish_status">
+<tt class="descname">publish_status</tt><big>(</big><em>topic</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.statistics_handler.StatisticsHandler.publish_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publishes the current stats to the given topic
+using ROS&#8217;s publisher-subscriber mechanism.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Topic:</th><td class="field-body">Topic to which the data should be published</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_nodeinterface.status">
+<span id="status"></span><h2>Status<a class="headerlink" href="#module-arni_nodeinterface.status" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_nodeinterface.status.Status">
+<em class="property">class </em><tt class="descclassname">arni_nodeinterface.status.</tt><tt class="descname">Status</tt><big>(</big><em>start</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Container Class to Store information about the current status.</p>
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.add_cpu_usage">
+<tt class="descname">add_cpu_usage</tt><big>(</big><em>usage</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.add_cpu_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another measured value to cpu_usage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>usage</strong> (<em>float</em>) &#8211; measured percentage of cpu used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.add_cpu_usage_core">
+<tt class="descname">add_cpu_usage_core</tt><big>(</big><em>usage</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.add_cpu_usage_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another set of measured values per core to  cpu_usage_core.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>usage</strong> (<em>float[]</em>) &#8211; measured percentage of cpu used per core.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.add_gpu_usage">
+<tt class="descname">add_gpu_usage</tt><big>(</big><em>usage</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.add_gpu_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another set of measured values per card to  gpu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>usage</strong> (<em>float[]</em>) &#8211; measured percentage of gpu used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.add_ram_usage">
+<tt class="descname">add_ram_usage</tt><big>(</big><em>usage</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.add_ram_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another measured value to ram_usage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>usage</strong> (<em>float</em>) &#8211; measured percentage of ram used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.calc_stat_tuple">
+<tt class="descname">calc_stat_tuple</tt><big>(</big><em>slist</em><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.calc_stat_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a named tuple containing mean , standard deviation and maximum
+of a given list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">namedtuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.calc_stats">
+<tt class="descname">calc_stats</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.calc_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a dictionary containing avg,stddev,max values.
+matching the fields in HostStatistics / NodeStatistics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the status .</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_nodeinterface.status.Status.reset_specific">
+<tt class="descname">reset_specific</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_nodeinterface.status.Status.reset_specific" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the values specific to Host or Nodes</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_nodeinterface.status.statistic_tuple">
+<tt class="descclassname">arni_nodeinterface.status.</tt><tt class="descname">statistic_tuple</tt><a class="headerlink" href="#arni_nodeinterface.status.statistic_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">statistic</span></tt></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Node Interface</a><ul>
+<li><a class="reference internal" href="#module-arni_nodeinterface.host_statistics_handler">HostStatisticsHandler</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.host_status">HostStatus</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.node_info">NodeInfo</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.node_manager">NodeManager</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.node_statistics_handler">NodeStatisticsHandler</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.node_status">NodeStatus</a></li>
+<li><a class="reference internal" href="#runnode">RunNode</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.statistics_handler">StatisticsHandler</a></li>
+<li><a class="reference internal" href="#module-arni_nodeinterface.status">Status</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="parameters.html"
+                        title="previous chapter">Parameters</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="processing.html"
+                        title="next chapter">Processing statistics</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/nodeinterface.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="processing.html" title="Processing statistics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="parameters.html" title="Parameters"
+             >previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
