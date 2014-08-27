@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ROS - Advanced Network Introspection's documentation!
-================================================================
+ARNI - Advanced ROS Network Introspection
+=========================================
 
 Contents:
 
@@ -12,11 +12,13 @@ Contents:
    :maxdepth: 2
 
    parameters
-   countermeasure
+   arni_nodeinterface
    processing
+   arni_countermeasure
+   arni_gui
+   rqt_arni_gui_overview
+   rqt_arni_gui_detail
 
-.. toctree::
-   :hidden:
    specifications
    definitions
    subs

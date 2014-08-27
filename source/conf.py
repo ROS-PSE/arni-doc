@@ -22,6 +22,10 @@ import os
 sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_countermeasure/src/arni_countermeasure'))
 sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_processing/src/arni_processing'))
 sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_core/src/arni_core'))
+sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_nodeinterface/src/arni_nodeinterface'))
+sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/arni_gui/src/arni_gui'))
+sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/rqt_arni_gui_detail/src/rqt_arni_gui_detail'))
+sys.path.insert(0, os.path.abspath('~/catkin_ws/src/arni/rqt_arni_gui_overview/src/rqt_arni_gui_overview'))
 
 # -- General configuration ------------------------------------------------
 

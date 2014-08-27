@@ -1,10 +1,8 @@
 Processing statistics
 *********************
 
-StartNode
-=========
-The file start_node.py is the executable script to start the MonitoringNode, which then invokes all necessary
-means to rate and provide statistics from nodes, hosts and connections.
+The monitoring node retrieves data on the topics /statistics, /statistics_node and /statistics_host. It then rates them according to specifications stored in the parameter namespace /arni/specifications.
+The resulting data are published on the topic /statistics_rated.
 
 MonitoringNode
 ==============

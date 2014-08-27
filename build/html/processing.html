@@ -24,7 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
-    <link rel="prev" title="arni_countermeasure" href="countermeasure.html" /> 
+    <link rel="next" title="Arni Countermeasure" href="arni_countermeasure.html" />
+    <link rel="prev" title="Arni Nodeinterface" href="arni_nodeinterface.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +38,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="countermeasure.html" title="arni_countermeasure"
+          <a href="arni_countermeasure.html" title="Arni Countermeasure"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arni_nodeinterface.html" title="Arni Nodeinterface"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -50,11 +54,8 @@
             
   <div class="section" id="processing-statistics">
 <h1>Processing statistics<a class="headerlink" href="#processing-statistics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="startnode">
-<h2>StartNode<a class="headerlink" href="#startnode" title="Permalink to this headline">¶</a></h2>
-<p>The file start_node.py is the executable script to start the MonitoringNode, which then invokes all necessary
-means to rate and provide statistics from nodes, hosts and connections.</p>
-</div>
+<p>The monitoring node retrieves data on the topics /statistics, /statistics_node and /statistics_host. It then rates them according to specifications stored in the parameter namespace /arni/specifications.
+The resulting data are published on the topic /statistics_rated.</p>
 <div class="section" id="module-arni_processing.monitoring_node">
 <span id="monitoringnode"></span><h2>MonitoringNode<a class="headerlink" href="#module-arni_processing.monitoring_node" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -92,9 +93,9 @@ lets them process and finally publishes the comparison result.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>MetadataStorageRequest.</em>) &#8211; The request containing a timestamp and an identifier.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<em>StatisticHistoryRequest.</em>) &#8211; The request containing a timestamp and an identifier.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">MetadataStorageResponse</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">StatisticHistoryResponse</td>
 </tr>
 </tbody>
 </table>
@@ -369,11 +370,10 @@ and can provide them on request.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> &#8211; The data to store.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>StorageContainer</em>) &#8211; The data to store.</td>
 </tr>
 </tbody>
 </table>
-<p>:type container StorageContainer</p>
 </dd></dl>
 
 </dd></dl>
@@ -400,7 +400,6 @@ seuid identifying the package.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Processing statistics</a><ul>
-<li><a class="reference internal" href="#startnode">StartNode</a></li>
 <li><a class="reference internal" href="#module-arni_processing.monitoring_node">MonitoringNode</a></li>
 <li><a class="reference internal" href="#module-arni_processing.rated_statistics">RatedStatisticsContainer</a></li>
 <li><a class="reference internal" href="#module-arni_processing.specification_handler">SpecificationHandler</a></li>
@@ -412,8 +411,11 @@ seuid identifying the package.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="countermeasure.html"
-                        title="previous chapter">arni_countermeasure</a></p>
+  <p class="topless"><a href="arni_nodeinterface.html"
+                        title="previous chapter">Arni Nodeinterface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arni_countermeasure.html"
+                        title="next chapter">Arni Countermeasure</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/processing.txt"
@@ -446,7 +448,10 @@ seuid identifying the package.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="countermeasure.html" title="arni_countermeasure"
+          <a href="arni_countermeasure.html" title="Arni Countermeasure"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arni_nodeinterface.html" title="Arni Nodeinterface"
              >previous</a> |</li>
         <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
       </ul>

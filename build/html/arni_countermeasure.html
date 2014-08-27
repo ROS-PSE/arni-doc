@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Arni Countermeasure &mdash; ROS - Advanced Network Introspection 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ROS - Advanced Network Introspection 1.0 documentation" href="index.html" />
+    <link rel="next" title="Arni Gui" href="arni_gui.html" />
+    <link rel="prev" title="Processing statistics" href="processing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="arni_gui.html" title="Arni Gui"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="processing.html" title="Processing statistics"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="arni-countermeasure">
+<h1>Arni Countermeasure<a class="headerlink" href="#arni-countermeasure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-arni_countermeasure.reaction_restart_node">
+<span id="reactionrestartnode"></span><h2>ReactionRestartNode<a class="headerlink" href="#module-arni_countermeasure.reaction_restart_node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.reaction_restart_node.ReactionRestartNode">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.reaction_restart_node.</tt><tt class="descname">ReactionRestartNode</tt><big>(</big><em>node</em>, <em>autonomy_level</em><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction_restart_node.ReactionRestartNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reaction that is able to restart a node.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint">
+<span id="constraint"></span><h2>Constraint<a class="headerlink" href="#module-arni_countermeasure.constraint" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint.Constraint">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint.</tt><tt class="descname">Constraint</tt><big>(</big><em>name</em>, <em>constraint_root</em>, <em>planned_reaction</em>, <em>min_reaction_interval</em>, <em>reaction_timeout</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint.Constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the whole constraint with corresponding reactions.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint.Constraint.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint.Constraint.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates this constraint and sets the attributes
+according to the result of the evaluation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<em>RatedStatisticStorage</em>) &#8211; The storage where the incoming statistics are saved.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_countermeasure.constraint.Constraint.evaluation_result">
+<tt class="descname">evaluation_result</tt><em class="property"> = None</em><a class="headerlink" href="#arni_countermeasure.constraint.Constraint.evaluation_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the current state of the constraint says that
+an execution of the reactions is necessary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.constraint.Constraint.notify_of_execution">
+<tt class="descname">notify_of_execution</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint.Constraint.notify_of_execution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells this constraint that its reactions have just been executed.</p>
+<p># Note: its important to notify this constraint so it knows how long
+the last execution was ago and does not execute too often.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_countermeasure.constraint.Constraint.planned_reaction">
+<tt class="descname">planned_reaction</tt><em class="property"> = None</em><a class="headerlink" href="#arni_countermeasure.constraint.Constraint.planned_reaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>An list of reactions that should be executed if the constraint
+has been true longer than min_reaction_interval milliseconds.
+:type:   list of Reactions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arni_countermeasure.constraint.Constraint.true_since">
+<tt class="descname">true_since</tt><em class="property"> = None</em><a class="headerlink" href="#arni_countermeasure.constraint.Constraint.true_since" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time since when this constraint is true.
+# Note if true_since is 0 it has not been true.
+:type:   rospy.Time</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.helper">
+<span id="helper"></span><h2>Helper<a class="headerlink" href="#module-arni_countermeasure.helper" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="arni_countermeasure.helper.ARNI_CTM_CFG_NS">
+<tt class="descclassname">arni_countermeasure.helper.</tt><tt class="descname">ARNI_CTM_CFG_NS</tt><em class="property"> = '/arni/countermeasure/config/'</em><a class="headerlink" href="#arni_countermeasure.helper.ARNI_CTM_CFG_NS" title="Permalink to this definition">¶</a></dt>
+<dd><p>the parameter namespace for configuration files
+of the arni_countermeasure node</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="arni_countermeasure.helper.ARNI_CTM_NS">
+<tt class="descclassname">arni_countermeasure.helper.</tt><tt class="descname">ARNI_CTM_NS</tt><em class="property"> = '/arni/countermeasure/'</em><a class="headerlink" href="#arni_countermeasure.helper.ARNI_CTM_NS" title="Permalink to this definition">¶</a></dt>
+<dd><p>the parameter namespace for the arni_countermeasure node</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="arni_countermeasure.helper.get_param_duration">
+<tt class="descclassname">arni_countermeasure.helper.</tt><tt class="descname">get_param_duration</tt><big>(</big><em>param</em><big>)</big><a class="headerlink" href="#arni_countermeasure.helper.get_param_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls rospy.get_param and logs errors.</p>
+<p>Logs if the param does not exist or is not parsable to rospy.Durotation.
+And calls rospy.signal_shutdown if the value is invalid/not existing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The Param param from the parameter server.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">rospy.Duration</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_item">
+<span id="constraintitem"></span><h2>ConstraintItem<a class="headerlink" href="#module-arni_countermeasure.constraint_item" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_item.ConstraintItem">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_item.</tt><tt class="descname">ConstraintItem</tt><a class="headerlink" href="#arni_countermeasure.constraint_item.ConstraintItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract description of a Constraint.
+Can be a logical operation on constraints or an actual constraint.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_item.ConstraintItem.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_item.ConstraintItem.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates if this constraint,
+given the available RatedStatisticStorage.
+Returns wheter the constraint is true or not.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_and">
+<span id="constraintand"></span><h2>ConstraintAnd<a class="headerlink" href="#module-arni_countermeasure.constraint_and" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_and.ConstraintAnd">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_and.</tt><tt class="descname">ConstraintAnd</tt><big>(</big><em>constraints</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_and.ConstraintAnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>An constraints consisting of other
+constraints logically and colligated.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_and.ConstraintAnd.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_and.ConstraintAnd.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate if all of the constraints inside are true.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<em>RatedStatisticStorage</em>) &#8211; The storage where the incoming statistics are saved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if all constraints are true.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.countermeasure_node">
+<span id="countermeasurenode"></span><h2>CountermeasureNode<a class="headerlink" href="#module-arni_countermeasure.countermeasure_node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.countermeasure_node.CountermeasureNode">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.countermeasure_node.</tt><tt class="descname">CountermeasureNode</tt><a class="headerlink" href="#arni_countermeasure.countermeasure_node.CountermeasureNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ROS node.
+Evaluates incoming rated statistics with a list of constraints.
+If those constraints turn out to be true appropriate action is taken.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.outcome">
+<span id="outcome"></span><h2>Outcome<a class="headerlink" href="#module-arni_countermeasure.outcome" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.outcome.Outcome">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.outcome.</tt><tt class="descname">Outcome</tt><a class="headerlink" href="#arni_countermeasure.outcome.Outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration of all states an rated statistic can have.</p>
+<dl class="staticmethod">
+<dt id="arni_countermeasure.outcome.Outcome.from_str">
+<em class="property">static </em><tt class="descname">from_str</tt><big>(</big><em>txt</em><big>)</big><a class="headerlink" href="#arni_countermeasure.outcome.Outcome.from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the int value for an textual representation of the outcome.</p>
+<p>Returns UNKNOWN if the textual representation is no valid outcome.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="arni_countermeasure.outcome.Outcome.is_valid">
+<em class="property">static </em><tt class="descname">is_valid</tt><big>(</big><em>out</em><big>)</big><a class="headerlink" href="#arni_countermeasure.outcome.Outcome.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a outcome (numeric representation) is valid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out</strong> (<em>int</em>) &#8211; The outcome in numeric format.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">whether out is a valid outcome or not.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_not">
+<span id="constraintnot"></span><h2>ConstraintNot<a class="headerlink" href="#module-arni_countermeasure.constraint_not" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_not.ConstraintNot">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_not.</tt><tt class="descname">ConstraintNot</tt><big>(</big><em>constraint</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_not.ConstraintNot" title="Permalink to this definition">¶</a></dt>
+<dd><p>An constraints consisting of another constraint negated.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_not.ConstraintNot.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_not.ConstraintNot.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate if the constraint inside this constraint is false or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<em>RatedStatisticStorage</em>) &#8211; The storage where the incoming statistics are saved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True iff the constraint inside is False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.reaction">
+<span id="reaction"></span><h2>Reaction<a class="headerlink" href="#module-arni_countermeasure.reaction" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.reaction.Reaction">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.reaction.</tt><tt class="descname">Reaction</tt><big>(</big><em>node</em>, <em>autonomy_level</em><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction.Reaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract Reaction to an Constraint.
+The Reaction is to be executed
+on the corresponding host of the given node.</p>
+<dl class="attribute">
+<dt id="arni_countermeasure.reaction.Reaction.autonomy_level">
+<tt class="descname">autonomy_level</tt><em class="property"> = None</em><a class="headerlink" href="#arni_countermeasure.reaction.Reaction.autonomy_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>the autonomy level</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_leaf">
+<span id="constraintleaf"></span><h2>ConstraintLeaf<a class="headerlink" href="#module-arni_countermeasure.constraint_leaf" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_leaf.ConstraintLeaf">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_leaf.</tt><tt class="descname">ConstraintLeaf</tt><big>(</big><em>seuid</em>, <em>statistic_type</em>, <em>outcome</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_leaf.ConstraintLeaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains an actual statistic datapoint
+and the seuid the datapoint belongs to.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_leaf.ConstraintLeaf.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_leaf.ConstraintLeaf.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate if this constraint is true or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<em>RatedStatisticStorage</em>) &#8211; The storage where the incoming statistics are saved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Return if the wanted outcome is the same as the outcome
+in the storage.
+Note: having OUT_OF_BOUNDS as constraint and getting
+HIGH or LOW also evaluates to true.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_or">
+<span id="constraintor"></span><h2>ConstraintOr<a class="headerlink" href="#module-arni_countermeasure.constraint_or" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_or.ConstraintOr">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_or.</tt><tt class="descname">ConstraintOr</tt><big>(</big><em>constraints</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_or.ConstraintOr" title="Permalink to this definition">¶</a></dt>
+<dd><p>An constraints consisting of
+other constraints logically or colligated.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_or.ConstraintOr.evaluate_constraint">
+<tt class="descname">evaluate_constraint</tt><big>(</big><em>storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_or.ConstraintOr.evaluate_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate if at least one of the constraints inside is true.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<em>RatedStatisticStorage</em>) &#8211; The storage where the incoming statistics are saved.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if one of the constraints is true.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.constraint_handler">
+<span id="constrainthandler"></span><h2>ConstraintHandler<a class="headerlink" href="#module-arni_countermeasure.constraint_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.constraint_handler.ConstraintHandler">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.constraint_handler.</tt><tt class="descname">ConstraintHandler</tt><big>(</big><em>rated_statistic_storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_handler.ConstraintHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages all constraints, checks if they are true
+and executes appropriate reactions if neccessary.</p>
+<dl class="method">
+<dt id="arni_countermeasure.constraint_handler.ConstraintHandler.add_constraint">
+<tt class="descname">add_constraint</tt><big>(</big><em>constraint</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_handler.ConstraintHandler.add_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an constraint to the list of constraints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>constraint</strong> (<em>Constraint</em>) &#8211; The constraint to add.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.constraint_handler.ConstraintHandler.evaluate_constraints">
+<tt class="descname">evaluate_constraints</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_handler.ConstraintHandler.evaluate_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate every constraint.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.constraint_handler.ConstraintHandler.execute_reactions">
+<tt class="descname">execute_reactions</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_handler.ConstraintHandler.execute_reactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there are any new reactions to do
+and execute them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.constraint_handler.ConstraintHandler.set_statistic_storage">
+<tt class="descname">set_statistic_storage</tt><big>(</big><em>rated_statistic_storage</em><big>)</big><a class="headerlink" href="#arni_countermeasure.constraint_handler.ConstraintHandler.set_statistic_storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the statistic storage to use.
+Should only be needed on initialisation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rated_statistic_storage</strong> &#8211; The statistic storage to use.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">RatedStatisticStorage</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.reaction_run">
+<span id="reactionrun"></span><h2>ReactionRun<a class="headerlink" href="#module-arni_countermeasure.reaction_run" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.reaction_run.ReactionRun">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.reaction_run.</tt><tt class="descname">ReactionRun</tt><big>(</big><em>node</em>, <em>autonomy_level</em>, <em>command</em><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction_run.ReactionRun" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Reaction which executes a command
+on the remote machine the specified node runs on.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.rated_statistic_storage">
+<span id="ratedstatisticstorage"></span><h2>RatedStatisticStorage<a class="headerlink" href="#module-arni_countermeasure.rated_statistic_storage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.rated_statistic_storage.RatedStatisticStorage">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.rated_statistic_storage.</tt><tt class="descname">RatedStatisticStorage</tt><a class="headerlink" href="#arni_countermeasure.rated_statistic_storage.RatedStatisticStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>A database which contains the current state
+of all rated statistics.</p>
+<dl class="method">
+<dt id="arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.callback_rated_statistic">
+<tt class="descname">callback_rated_statistic</tt><big>(</big><em>msg</em><big>)</big><a class="headerlink" href="#arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.callback_rated_statistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for incoming rated statistics.
+Add them to the dictionary or remove items from
+the dictionary if the rated statistic
+says that its within bounds again.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<em>RatedStatistics</em>) &#8211; The rated statistic to be added to the storage.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.clean_old_statistic">
+<tt class="descname">clean_old_statistic</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.clean_old_statistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the complete dictionary for statistics
+older than timeout seconds and remove them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.get_outcome">
+<tt class="descname">get_outcome</tt><big>(</big><em>seuid</em>, <em>statistic_type</em><big>)</big><a class="headerlink" href="#arni_countermeasure.rated_statistic_storage.RatedStatisticStorage.get_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the outcome of the specific seuid
+and statistic_type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>seuid</strong> (<em>string</em>) &#8211; The seuid of the entity the statistic belongs to.</li>
+<li><strong>statistic_type</strong> (<em>string</em>) &#8211; Type of statistic.
+Arrays get a suffix: type_0 type_1 and so on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The outcome the type currently has.
+Returns Outcome.UNKNOWN if there is no saved outcome.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">Outcome (int)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises AttributeError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">If the outcome in the storage
+is not a valid outcome. Should not occur
+because there is a validation check upon
+entering the outcome into the storage.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.reaction_publish_rosout_node">
+<span id="reactionpublishrosoutnode"></span><h2>ReactionPublishRosoutNode<a class="headerlink" href="#module-arni_countermeasure.reaction_publish_rosout_node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.reaction_publish_rosout_node.ReactionPublishRosOutNode">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.reaction_publish_rosout_node.</tt><tt class="descname">ReactionPublishRosOutNode</tt><big>(</big><em>autonomy_level</em>, <em>message</em>, <em>loglevel</em><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction_publish_rosout_node.ReactionPublishRosOutNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reaction that is able to publish a message on rosout.</p>
+<dl class="method">
+<dt id="arni_countermeasure.reaction_publish_rosout_node.ReactionPublishRosOutNode.execute_reaction">
+<tt class="descname">execute_reaction</tt><big>(</big><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction_publish_rosout_node.ReactionPublishRosOutNode.execute_reaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log the reaction message at a specific loglevel.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-arni_countermeasure.reaction_stop_node">
+<span id="reactionstopnode"></span><h2>ReactionStopNode<a class="headerlink" href="#module-arni_countermeasure.reaction_stop_node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arni_countermeasure.reaction_stop_node.ReactionStopNode">
+<em class="property">class </em><tt class="descclassname">arni_countermeasure.reaction_stop_node.</tt><tt class="descname">ReactionStopNode</tt><big>(</big><em>node</em>, <em>autonomy_level</em><big>)</big><a class="headerlink" href="#arni_countermeasure.reaction_stop_node.ReactionStopNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reaction that is able to stop a node.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Arni Countermeasure</a><ul>
+<li><a class="reference internal" href="#module-arni_countermeasure.reaction_restart_node">ReactionRestartNode</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint">Constraint</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.helper">Helper</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_item">ConstraintItem</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_and">ConstraintAnd</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.countermeasure_node">CountermeasureNode</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.outcome">Outcome</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_not">ConstraintNot</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.reaction">Reaction</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_leaf">ConstraintLeaf</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_or">ConstraintOr</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.constraint_handler">ConstraintHandler</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.reaction_run">ReactionRun</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.rated_statistic_storage">RatedStatisticStorage</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.reaction_publish_rosout_node">ReactionPublishRosoutNode</a></li>
+<li><a class="reference internal" href="#module-arni_countermeasure.reaction_stop_node">ReactionStopNode</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="processing.html"
+                        title="previous chapter">Processing statistics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arni_gui.html"
+                        title="next chapter">Arni Gui</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/arni_countermeasure.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="arni_gui.html" title="Arni Gui"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="processing.html" title="Processing statistics"
+             >previous</a> |</li>
+        <li><a href="index.html">ROS - Advanced Network Introspection 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Weber, Matthias Hadlich, Matthias Klatte, Micha Wetzel, Sebastian Kneipp.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
